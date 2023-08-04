@@ -9,14 +9,10 @@ var majorityElement = function (nums) {
 
     for (let num of nums) {
         numFreq[num] = (numFreq[num] || 0) + 1
+        mostCommonNum = numFreq[num] > mostFreqVal ? num : mostCommonNum
+        mostFreqVal = Math.max(mostFreqVal, numFreq[num])
     }
-    
-    for (let num in numFreq) {
-        if (numFreq[num] > mostFreqVal) {
-            mostFreqVal = numFreq[num];
-            mostCommonNum = num
-        }
-    }
+
 
     return mostCommonNum;
 };
