@@ -1,31 +1,30 @@
 /**
  * @param {number[]} nums
  * @return {number}
+ * 
  */
-var pivotIndex = function (nums) {
-    let pivot = -1;
 
-    for (let i = 0; i < nums.length; i++) {
-        let total = 0;
+var pivotIndex = function (nums) { //[2,1,-1]
+    let totalOfNums = 0;
+    let leftSum = 0
 
-        for (let j = i + 1; j < nums.length; j++) {
-            total += nums[j];
-        }
-
-        for (let k = 0; k < i; k++) {
-            total -= nums[k];
-        }
-
-        if (total === 0) {
-            pivot = i;
-            break;
-        }
+    for (let num of nums) {
+        totalOfNums += num
     }
 
-    return pivot;
+    for (let i = 0; i < nums.length; i++) {
+        rightSum = totalOfNums - nums[i] - leftSum
+
+        if (leftSum === rightSum) { 
+            return i
+        }
+        leftSum += nums[i]
+    }
+
+    return -1
 };
 
-//brute for method
+//brute force method O(n^2)
 
 //init a pivot index as -1
 
@@ -42,3 +41,25 @@ var pivotIndex = function (nums) {
         //pivot index === i
 
 //return pivot index
+
+    // let pivot = -1;
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     let total = 0;
+
+    //     for (let j = i + 1; j < nums.length; j++) {
+    //         total += nums[j];
+    //     }
+
+    //     for (let k = 0; k < i; k++) {
+    //         total -= nums[k];
+    //     }
+
+    //     if (total === 0) {
+    //         pivot = i;
+    //         break;
+    //     }
+    // }
+
+    // return pivot;
+
