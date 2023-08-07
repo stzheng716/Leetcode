@@ -24,7 +24,7 @@ var nextGreaterElement = function (nums1, nums2) {
                 break;
             }
         }
-        console.log("currNum1", currNum1)
+
         ans.push(greaterNum)
     }
 
