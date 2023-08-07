@@ -18,7 +18,7 @@ var nextGreaterElement = function (nums1, nums2) {
     for (let idx of idxArr) {
         const currNum1 = nums2[idx];
         let greaterNum = -1
-        for (let i = idx; i < nums2.length; i++) {
+        for (let i = idx + 1; i < nums2.length; i++) {
             if (nums2[i] > currNum1 && nums2[i] > greaterNum) {
                 greaterNum = nums2[i]
                 break;
