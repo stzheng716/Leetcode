@@ -3,31 +3,56 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    const newString = [];
 
-    for(let char of s) {
-        let lowerChar = char.toLowerCase();
+    let left = 0;
+    let right = s.length - 1;
 
-        if(lowerChar.charCodeAt() >= 97 && lowerChar.charCodeAt() <= 122 ||
-        lowerChar.charCodeAt() >= 48 && lowerChar.charCodeAt() <= 57) {
-            newString.push(lowerChar);
+    while (left < right) {
+        if(!isAlphaNum(s[left]) && left <= right) {
+            left++;
+            continue
+        } 
+        
+        if(!isAlphaNum(s[right]) && left <= right) {
+            right--;
+            continue
+        } 
+
+        if(s[left].toLowerCase() !== s[right].toLowerCase()) {
+            return false;
         }
+
+        left++;
+        right--;
     }
 
-    let stdString = newString.join("");
-    let reverseString = newString.reverse().join("");
-
-    return stdString === reverseString;
+    return true
 };
 
-//init newString = []
+function isAlphaNum(char) {
+    const lowerChar = char.toLowerCase();
 
-//for loop through string
-    //lower case string
-    //if charcodeat >= 97 && charcodeat <= 122
-        //add letter to array
+    return (("a".charCodeAt(0) <= lowerChar.charCodeAt(0) && "z".charCodeAt(0) >= lowerChar.charCodeAt(0)) || 
+    ("0".charCodeAt(0) <= lowerChar.charCodeAt(0) && "9".charCodeAt(0) >= lowerChar.charCodeAt(0))) 
+}
+
+
+//init a left pointer = 0;
+//init a right pointer = s.length - 1
+
+//while l <= r
+    //check if left char is alphaNumeric
+        //left++
+
+    //check if right char is alphaNumeric
+        //right--
+
+    //if left !== right
+        //return false;
+
+//return true
+
     
-//let stdString = newString.join("")
-//let reverseString = newString.reverse().join("")
-
-//return stdString === revsereString
+//function isAlphNum(char)
+    // lowerChar = char.toLowerCase
+    // ("a".charCodeAt(0) <= lowerChar.charCodeAt(0) && "z".charCodeAt(0) >= lowerChar.toLowerCase) || ("0".charCodeAt(0) <= lowerChar.charCodeAt(0) && "9".charCodeAt(0) >= lowerChar.charCodeAt(0)) 
