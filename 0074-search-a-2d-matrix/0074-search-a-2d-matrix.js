@@ -42,36 +42,3 @@ var searchMatrix = function (matrix, target) {
     return false;
 };
 
-//this problem will need binary search
-
-//init start = 0;
-//init end = matrix[0].length - 1;
-
-//init top = 0;
-//bottom = matrix.length - 1
-
-//while top < bottom
-    //middle = math.floor(top + bottom)/ 2
-    //if(matrix[middle][0] > target && matrix[middle][end] < target)
-        //continue
-    //else if(matrix[middle][0] > target)
-        //bottom - 1
-    //else if (matrix[middle][end] < target)
-        //top + 1
-
-//if !top < bottom return false;
-
-
-//tarRow = middle = math.floor(top + bottom)/ 2
-
-//while start < end
-    //middle = (start + end) / 2
-
-    //if tarRow[middle] < target 
-        //start + 1
-    //else if tarRow[middle] > target
-        //end - 1
-    //else 
-        //return true
-
-//return false;
