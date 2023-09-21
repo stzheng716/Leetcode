@@ -11,28 +11,35 @@
  * @return {TreeNode}
  */
 var invertTree = function(root) {
+    if (!root) return root;
 
-    if(!root) return null;
+    if(root.left) {
+        invertTree(root.left)
+    }
 
-    const temp = root.left
-    root.left = root.right
-    root.right = temp
+    if(root.right) {
+        invertTree(root.right)
+    }
 
-    invertTree(root.left)
-    invertTree(root.right)
+    const temp = root.left;
+    root.left = root.right;
+    root.right = temp;
 
-    return root
+    return root;
 };
 
-//when given root, it is the binary tree
-//we would need to swap the children
 
-//first level
-//temp = 1
-// 1 = 2
-// 2 = temp
+//use recursion
 
-//second level
-//temp = 3
-// 3 = 6
-// 6 = temp
+//if !root return;
+
+//if root.left
+    //invert(root.left)
+//if root.right
+    //invert(root.right)
+    
+//const temp = root.left
+//root.left = root.right
+//root.right = temp
+
+//return root
