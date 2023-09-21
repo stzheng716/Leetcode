@@ -13,17 +13,11 @@
 var invertTree = function(root) {
     if (!root) return root;
 
-    if(root.left) {
-        invertTree(root.left)
+    if(root.left || root.right) {
+        const temp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
     }
-
-    if(root.right) {
-        invertTree(root.right)
-    }
-
-    const temp = root.left;
-    root.left = root.right;
-    root.right = temp;
 
     return root;
 };
