@@ -12,17 +12,35 @@
  */
 var isBalanced = function(root) {
 
-    function DFS(root) {
-        if(!root) return [true, 0];
-        
-        let leftHeight = DFS(root.left);
-        let rightHeight = DFS(root.right)
+    function getHeightOfTree(root){
+        if (!root) return [true,0]
 
-        const balanced = Math.abs(leftHeight[1] - rightHeight[1]) <= 1 && leftHeight[0] && rightHeight[0]
+        const leftTree = getHeightOfTree(root.left);
+        const rightTree = getHeightOfTree(root.right);
 
-        return [balanced, 1 + Math.max(leftHeight[1], rightHeight[1])]
+        const heightDiff = Math.abs(leftTree[1] - rightTree[1])
 
+        const isBalanced = heightDiff <= 1 && leftTree[0] && rightTree[0];
+
+        return [isBalanced, 1 + Math.max(rightTree[1], leftTree[1])]
     }
 
-    return DFS(root)[0]
+    return getHeightOfTree(root)[0]
 };
+
+//use dfs to get the height of each tree from the bottom up
+
+//use recursion
+
+//define getHeightOfTree(root)
+    //if !root return [true, 0]
+    
+    //leftTree = getHeightOfTree(root.left)
+    //rightTree = getHeightOfTree(root.right)
+
+    //heightDiff = Math.abs(leftTree[1] - rightTree[1])
+
+    //isBalanced = heightDiff <= 1 && leftTree[0] && rightTree[0] 
+
+    //return [isBalaanced, 1 + Math.max(rightTree[1], leftTree[1])]
+//return getHeightOfTree(root)[0]
