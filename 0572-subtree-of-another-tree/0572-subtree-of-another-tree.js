@@ -12,7 +12,6 @@
  * @return {boolean}
  */
 var isSubtree = function(root, subRoot) {
-    if(root && !subRoot) return true
     if(!root && subRoot) return false
     
     if(sameTree(root, subRoot)) {
