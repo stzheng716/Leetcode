@@ -12,33 +12,61 @@
  * @return {Node}
  */
 var copyRandomList = function(head) {
-    
     const hash = new Map();
+    let dummyNode = new Node(0);
 
-    let newHead = new Node(0);
-    let newCurr = newHead;
+    let oldList = head;
+    let newList = dummyNode;
 
-    let curr = head;
-    
-    while(curr){
-        let newNode = new Node(curr.val);
-        newCurr.next = newNode;
-        newCurr = newNode
-        hash.set(curr, newNode)
+    while(oldList) {
+        let newNode = new Node(oldList.val);
+        newList.next = newNode;
+        newList = newNode;
+        hash.set(oldList, newNode)
 
-        curr = curr.next
+        oldList = oldList.next
     }
 
-    curr = head
+    oldList = head;
 
-    while(curr) {
-        let copyNode = hash.get(curr)
-        if(curr !== null) {
-            copyNode.random = hash.get(curr.random)
-        } 
+    while(oldList) {
+        let newNode = hash.get(oldList)
+        let newRandomNode = hash.get(oldList.random)
+        if(oldList.random !== null) {
+            newNode.random = newRandomNode
+        }
 
-        curr = curr.next;
+        oldList = oldList.next
     }
 
-    return newHead.next;
+    return dummyNode.next
 };
+
+
+//make new map
+
+//make dummyNode
+
+//curr = head
+
+//newList = dummyNode
+
+//while loop
+    //make copy of existing list with next pointers
+    
+    //create new Node
+    //newList.next = new Node
+    //newList = newNode
+    //set hash map with curr and newNode
+    
+    //iterate the current list
+
+//set curr to head again
+
+//while loop
+    //get newNode
+    //make sure newNode.random is not null
+        //set random
+    //iterate the current list
+
+//return dummyNode.next
