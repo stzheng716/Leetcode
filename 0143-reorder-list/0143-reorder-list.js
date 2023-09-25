@@ -11,39 +11,44 @@
  */
 var reorderList = function (head) {
 
+    let fast = head.next;
     let slow = head;
-    let fast = head.next
 
     while(fast && fast.next) {
         slow = slow.next
         fast = fast.next.next
     }
 
-    let second = slow.next
-    slow.next = null
-    let prev = null;
+    if (!(slow && slow.next)) return;
+    let second = slow.next;
+    slow.next = null;
+    let prev = null
 
-    while(second){
-        let temp = second.next;
+    while(second) {
+        let temp = second.next
         second.next = prev;
         prev = second;
-        second = temp
+        second = temp;
     }
 
     let first = head;
-    second = prev
+    second = prev;
 
-    while(second) {
-        let temp1 = first.next;
-        let temp2 = second.next;
+    while(second){
+        let firstTemp = first.next;
+        let secondTemp = second.next;
+
         first.next = second
-        second.next = temp1
-        first = temp1;
-        second = temp2
+        second.next = firstTemp
+
+        first = firstTemp;
+        second = secondTemp
     }
+
 };
 
 //fine the middle with fast slow
 //reverse the second half of the list
 
 //merge the list
+    //by using double temps
