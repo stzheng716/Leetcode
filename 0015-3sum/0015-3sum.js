@@ -13,15 +13,6 @@ var threeSum = function (nums) {
         let left = i + 1;
         let right = nums.length - 1;
         while (left < right) {
-            if (left === i) {
-                left++
-                continue;
-            }
-
-            if (right === i) {
-                right--;
-                continue;
-            }
             sum = currNum + nums[left] + nums[right];
 
             if (sum === 0) {
