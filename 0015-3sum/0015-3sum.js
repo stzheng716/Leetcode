@@ -19,7 +19,7 @@ var threeSum = function (nums) {
                 res.push([nums[i], nums[left], nums[right]])
                 right--;
                 left++;
-                while (nums[left] === nums[left - 1] && left < right) {
+                while (nums[left] === nums[left - 1] && left < right){
                     left++;
                 }
 
