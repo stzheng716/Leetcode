@@ -8,12 +8,12 @@ var isPalindrome = function(s) {
     let right = s.length - 1;
 
     while (left < right) {
-        if(!isAlphaNum(s[left]) && left <= right) {
+        if(!isAlphaNum(s[left])) {
             left++;
             continue
         } 
         
-        if(!isAlphaNum(s[right]) && left <= right) {
+        if(!isAlphaNum(s[right])) {
             right--;
             continue
         } 
