@@ -10,7 +10,7 @@ var maxArea = function(height) {
     let maxAmount = 0;
 
     while(l <= r) {
-        area = (r - l) * Math.min(height[l], height[r]);
+        const area = (r - l) * Math.min(height[l], height[r]);
         maxAmount = Math.max(area, maxAmount)
         if(height[l] <= height[r]){
             l++;
