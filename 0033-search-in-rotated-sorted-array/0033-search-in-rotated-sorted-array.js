@@ -4,50 +4,52 @@
  * @return {number}
  */
 var search = function (nums, target) {
-    let l = 0; 
+    let l = 0;
     let r = nums.length - 1;
 
-    while (l <= r) {//[5,1,3] t = 3
-        let m = Math.floor((l + r)/ 2) //1(1)
+    while(l <= r) {
+        let m = Math.floor((l + r) / 2);
+
         if(nums[m] === target) {
             return m;
         }
 
-        if(nums[m] >= nums[l]) { //1 > 3
-            if(target > nums[m] || target < nums[l]) { 
+        if(nums[m] >= nums[l]) {
+            if(nums[m] < target || target < nums[l]) {
                 l = m + 1
             } else {
                 r = m - 1
             }
         } else {
-            if(nums[r] < target || target < nums[m]) { //5 > 3
+            if(nums[m] > target || target > nums[r]) {
                 r = m - 1
             } else {
                 l = m + 1
             }
         }
-
     }
 
     return -1
 };
 
-//init a left
-//init a right
+//init l = 0;
+//init r = nums.length - 1;
 
 //while l <= r
-    //cal middle l + r / 2
-    //if middle === target
-        //return middle
-    //if middle > target
-        //if left >= target
+    //mid = l + r / 2
+
+    //if nums[mid] === target
+        //return mid
+    
+    //if nums[mid] <= nums[l]
+        //if nums[mid] < target || target < nums[left] 
             //l = m + 1
-        //else
+        //else  
             //r = m - 1
-    //if middle < target
-        //if left >= target
+    //else
+        //if nums[mid] > target || target > nums[right] 
             //r = m - 1
-        //else
+        //else  
             //l = m + 1
 
 //return -1
